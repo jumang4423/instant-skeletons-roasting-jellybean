@@ -69,7 +69,7 @@ const Index: NextPage = () => {
           fontSize: '48px',
         }}
       >
-        instant skeletons roasting jellybean💀💀💀
+        instant skeletons roasting jellybean💀💀
       </div>
       <div style={{ background: '#222' }}>
         {isPlaying && (

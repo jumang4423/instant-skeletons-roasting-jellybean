@@ -6,9 +6,10 @@
   "author": "Simon <sn@hitbox.tv>",
   "license": "MIT",
   "scripts": {
-    "dev": "next dev",
+    "dev": "next",
     "build": "next build",
-    "start": "next start -p $PORT"
+    "start": "next start",
+    "lint": "next lint"
   },
   "devDependencies": {
     "@commitlint/cli": "^14.1.0",
