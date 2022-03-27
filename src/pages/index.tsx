@@ -25,18 +25,20 @@ const Index: NextPage = () => {
   //state
   const isPlaying = selected_num !== -1;
 
-  const fun = useCallback((event: any) => {
+  const fun = useCallback((event) => {
+    console.log('key pressed')
     // if space key, event.preventDefault();
     if (event.key === ' ') {
       event.preventDefault();
     }
 
     setCurrentKey(event.key);
-    forceUpdate()
+    forceUpdate();
   }, [])
 
   useEffect(() => {
     // preventDefault
+    console.log('addEventListener of keydown')
     document.addEventListener(
       'keydown',
       fun, false
@@ -71,7 +73,10 @@ const Index: NextPage = () => {
       >
         instant skeletons roasting jellybean💀💀
       </div>
-      <div style={{ background: '#222' }}>
+      <div style={{
+        background: '#222',
+      position: 'relative'
+      }}>
         {isPlaying && (
           <ReactPlayer
             ref={playerRef}
@@ -90,13 +95,11 @@ const Index: NextPage = () => {
         <div
           style={{
             // center
-            position: 'relative',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            bottom: '480px',
+            position: 'absolute',
+            left: isPlaying ? `calc(50% - ${texts[selected_num].length * 10}px)` : '',
+            top: '64px',
             color: '#fff',
-            fontSize: '48px',
+            fontSize: '42px',
           }}
         >
           {texts[selected_num]}
@@ -118,6 +121,16 @@ const Index: NextPage = () => {
             }}
           >
             0~9 key to start skeletons roasting, else key to turn off
+          </div>
+
+          <div
+            style={{
+              fontSize: '24px',
+              background: '#a00',
+              color: '#fff',
+            }}
+          >
+            !! make sure vimium is turned off
           </div>
 
           {texts.map((text, index) => (
