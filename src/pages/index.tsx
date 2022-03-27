@@ -1,10 +1,12 @@
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { NextPage } from 'next';
 import ReactPlayer from 'react-player';
 
 const Index: NextPage = () => {
   const [currentKey, setCurrentKey] = React.useState('');
   const [selected_num, setSelected_num] = React.useState(-1);
+  // force update
+  const [_, forceUpdate] = React.useReducer(e => e + 1, 0);
   // texts
   const [texts, setTexts] = React.useState([
     'Ok', // 0
@@ -23,19 +25,21 @@ const Index: NextPage = () => {
   //state
   const isPlaying = selected_num !== -1;
 
+  const fun = useCallback((event: any) => {
+    // if space key, event.preventDefault();
+    if (event.key === ' ') {
+      event.preventDefault();
+    }
+
+    setCurrentKey(event.key);
+    forceUpdate()
+  }, [])
+
   useEffect(() => {
     // preventDefault
     document.addEventListener(
       'keydown',
-      (event: any) => {
-        // if space key, event.preventDefault();
-        if (event.key === ' ') {
-          event.preventDefault();
-        }
-
-        setCurrentKey(event.key);
-      },
-      false
+      fun, false
     );
   }, []);
 
