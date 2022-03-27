@@ -25,23 +25,22 @@ const Index: NextPage = () => {
   //state
   const isPlaying = selected_num !== -1;
 
-  const fun = useCallback((event) => {
-    console.log('key pressed')
-    // if space key, event.preventDefault();
-    if (event.key === ' ') {
-      event.preventDefault();
-    }
-
-    setCurrentKey(event.key);
-    forceUpdate();
-  }, [])
-
   useEffect(() => {
     // preventDefault
-    console.log('addEventListener of keydown')
+    console.log('addEventListener of keydown');
     document.addEventListener(
       'keydown',
-      fun, false
+      event => {
+        console.log('key pressed');
+        // if space key, event.preventDefault();
+        if (event.key === ' ') {
+          event.preventDefault();
+        }
+
+        setCurrentKey(event.key);
+        forceUpdate();
+      },
+      false
     );
   }, []);
 
@@ -73,10 +72,12 @@ const Index: NextPage = () => {
       >
         instant skeletons roasting jellybean💀💀
       </div>
-      <div style={{
-        background: '#222',
-      position: 'relative'
-      }}>
+      <div
+        style={{
+          background: '#222',
+          position: 'relative',
+        }}
+      >
         {isPlaying && (
           <ReactPlayer
             ref={playerRef}
@@ -96,7 +97,9 @@ const Index: NextPage = () => {
           style={{
             // center
             position: 'absolute',
-            left: isPlaying ? `calc(50% - ${texts[selected_num].length * 10}px)` : '',
+            left: isPlaying
+              ? `calc(50% - ${texts[selected_num].length * 10}px)`
+              : '',
             top: '64px',
             color: '#fff',
             fontSize: '42px',

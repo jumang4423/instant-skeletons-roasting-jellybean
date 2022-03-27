@@ -6,7 +6,7 @@
   "author": "Simon <sn@hitbox.tv>",
   "license": "MIT",
   "scripts": {
-    "dev": "next dev",
+    "dev": "next",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
