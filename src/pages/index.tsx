@@ -31,7 +31,6 @@ const Index: NextPage = () => {
     document.addEventListener(
       'keydown',
       event => {
-        console.log('key pressed');
         // if space key, event.preventDefault();
         if (event.key === ' ') {
           event.preventDefault();
@@ -103,6 +102,7 @@ const Index: NextPage = () => {
             top: '64px',
             color: '#fff',
             fontSize: '42px',
+            fontWeight: 'bold',
           }}
         >
           {texts[selected_num]}
@@ -121,6 +121,8 @@ const Index: NextPage = () => {
             style={{
               fontSize: '24px',
               background: '#0a0',
+              margin: '8px',
+              padding: '8px',
             }}
           >
             0~9 key to start skeletons roasting, else key to turn off
@@ -131,9 +133,11 @@ const Index: NextPage = () => {
               fontSize: '24px',
               background: '#a00',
               color: '#fff',
+              margin: '8px',
+              padding: '8px',
             }}
           >
-            !! make sure vimium is turned off
+            !! make sure vimyium is turned off
           </div>
 
           {texts.map((text, index) => (
@@ -155,7 +159,10 @@ const Index: NextPage = () => {
                   fontSize: '24px',
                 }}
               >
-                {index} key:
+                {"'"}
+                {index}
+                {"'"}
+                key:
               </div>
               <input
                 key={index}
@@ -167,7 +174,6 @@ const Index: NextPage = () => {
                 onChange={event => {
                   const newArr = Object.assign([], texts);
                   newArr[index] = event.target.value;
-
                   setTexts(newArr);
                 }}
               />

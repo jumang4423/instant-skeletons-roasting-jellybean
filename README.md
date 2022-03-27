@@ -1,1 +1,3 @@
-# web audio api test
+#  instant skeletons roasting jellybean💀💀
+
+![pic](img/sc.png)
