@@ -67,7 +67,6 @@ const Index: NextPage = () => {
       >
         instant skeletons roasting jellybean💀💀💀
       </div>
-
       <div style={{ background: '#222' }}>
         {isPlaying && (
           <ReactPlayer
@@ -99,7 +98,6 @@ const Index: NextPage = () => {
           {texts[selected_num]}
         </div>
       </div>
-
       {!isPlaying && (
         <div
           style={{
@@ -157,6 +155,27 @@ const Index: NextPage = () => {
           ))}
         </div>
       )}
+      <div
+        style={{
+          marginTop: '64px',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          flexDirection: 'column',
+          fontSize: '36px',
+        }}
+      >
+        <div>developed by jumango </div>
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+          }}
+        >
+          listen to my music:
+          <a href="https://soundcloud.com/jumang4423">here</a>
+        </div>
+      </div>
     </div>
   );
 };
